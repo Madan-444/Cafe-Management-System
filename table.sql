@@ -25,3 +25,22 @@ create table product(
      status varchar(25),
      primary key
 )
+
+create table orders(
+    order_id int NOT NULL AUTO_INCREMENT,
+    order_name varchar(255) NOT NULL,
+    payment_method varchar(255) NOT NULL,
+    total_amount DECIMAL(10,2),
+     status varchar(25),
+     primary key(order_id)
+);
+
+create table order_items(
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    product_name varchar(255),
+    product_id INT,
+    quantity INT,
+    price integer,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id)
+);
